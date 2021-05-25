@@ -1,0 +1,6 @@
+﻿Build started...
+1>------ Build started: Project: SGS.UI, Configuration: Debug Any CPU ------
+1>C:\Users\Royce\source\repos\StudentGradebookSystem\SGS.UI\LogIn.cs(35,30,35,31): warning CS0168: The variable 'e' is declared but never used
+1>SGS.UI -> C:\Users\Royce\source\repos\StudentGradebookSystem\SGS.UI\bin\Debug\net5.0\SGS.UI.dll
+1>Done building project "SGS.UI.csproj".
+========== Build: 1 succeeded, 0 failed, 1 up-to-date, 0 skipped ==========

@@ -1,0 +1,12 @@
+C:\Users\Royce\source\repos\StudentGradebookSystem\SGS.BL\bin\Debug\net5.0\SGS.BL.deps.json
+C:\Users\Royce\source\repos\StudentGradebookSystem\SGS.BL\bin\Debug\net5.0\SGS.BL.dll
+C:\Users\Royce\source\repos\StudentGradebookSystem\SGS.BL\bin\Debug\net5.0\ref\SGS.BL.dll
+C:\Users\Royce\source\repos\StudentGradebookSystem\SGS.BL\bin\Debug\net5.0\SGS.BL.pdb
+C:\Users\Royce\source\repos\StudentGradebookSystem\SGS.BL\obj\Debug\net5.0\SGS.BL.csprojAssemblyReference.cache
+C:\Users\Royce\source\repos\StudentGradebookSystem\SGS.BL\obj\Debug\net5.0\SGS.BL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Royce\source\repos\StudentGradebookSystem\SGS.BL\obj\Debug\net5.0\SGS.BL.AssemblyInfoInputs.cache
+C:\Users\Royce\source\repos\StudentGradebookSystem\SGS.BL\obj\Debug\net5.0\SGS.BL.AssemblyInfo.cs
+C:\Users\Royce\source\repos\StudentGradebookSystem\SGS.BL\obj\Debug\net5.0\SGS.BL.csproj.CoreCompileInputs.cache
+C:\Users\Royce\source\repos\StudentGradebookSystem\SGS.BL\obj\Debug\net5.0\SGS.BL.dll
+C:\Users\Royce\source\repos\StudentGradebookSystem\SGS.BL\obj\Debug\net5.0\ref\SGS.BL.dll
+C:\Users\Royce\source\repos\StudentGradebookSystem\SGS.BL\obj\Debug\net5.0\SGS.BL.pdb
