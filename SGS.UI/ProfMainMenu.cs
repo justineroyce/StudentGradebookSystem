@@ -8,11 +8,12 @@ using SGS.UI;
 
 namespace SGS.UI
 {
+    //Dito po ay sa Professor Main Menu, Dito po nagtutuos ng grade siya at saan na course ilalagay nila.
+    //Sa view po dito, BSIT palang nalalagay ko po.
     public class ProfMainMenu
     {
-        int num;
+        int num, num2;
         string studentName;
-        string studentCourse;
         char optionSelected;
         string additonalOptionSelected;
 
@@ -21,12 +22,13 @@ namespace SGS.UI
         double prefinalsResult1, midtermResult1, addingMidAndFinal1, finalResult, finalPercentageAverage;
 
         LogIn log = new LogIn();
-        Student student = new Student();
         Grades grade = new Grades();
+        StudentCourse course = new StudentCourse();
+        Professor prof = new Professor();
 
         public void ProfessorMainMenu()
         {
-            Console.WriteLine("----------Welcome----------");
+            Console.WriteLine("Welcome " +prof.ProfName);
             Console.WriteLine("Press a Following Command: \nS/s - Start to Encode Grades\nL/l - Log-out");
             optionSelected = Console.ReadLine()[0];
 
@@ -56,26 +58,30 @@ namespace SGS.UI
                 Console.WriteLine("-----------------------Student Profile-----------------------");
                 Console.Write("Enter a Student Name: ");
                 studentName = Console.ReadLine();
-                student.AddStudentName.Add(studentName);
-
-                Console.Write("Course and Section: ");
-                studentCourse = Console.ReadLine();
-                student.AddStudentCourseAndSection.Add(studentCourse);
-                Console.Write("Press n to Next & e to End the Program: ");
+                Console.WriteLine("Course: ");
+                Console.WriteLine("1. BSIT\n2. BSA\n3. BSCpE\n4. BEED\n5. BSIE");
                 optionSelected = Console.ReadLine()[0];
                 switch (optionSelected)
                 {
-                    case 'n':
-                    case 'N':
+                    case '1':
+                        course.AddBSIT.Add(studentName);
                         MidtermAndPreFinalsComputing();
                         break;
-                    case 'e':
-                    case 'E':
-                        log.EndTheProgram();
+                    case '2':
+                        course.AddBSA.Add(studentName);
+                        MidtermAndPreFinalsComputing();
                         break;
-                    default:
-                        Console.WriteLine("Invalid Imput, Try Again\n");
-                        StudentProfile();
+                    case '3':
+                        course.AddBSCPE.Add(studentName);
+                        MidtermAndPreFinalsComputing();
+                        break;
+                    case '4':
+                        course.AddBEED.Add(studentName);
+                        MidtermAndPreFinalsComputing();
+                        break;
+                    case '5':
+                        course.AddBSIE.Add(studentName);
+                        MidtermAndPreFinalsComputing();
                         break;
                 }
             }
@@ -123,7 +129,9 @@ namespace SGS.UI
                     double project2Score = Convert.ToDouble(Console.ReadLine());
                     Console.Write("Final Eaxam (Up to 50 choices)(40%): ");
                     double finalExam = Convert.ToDouble(Console.ReadLine());
-                    Console.WriteLine("Press Enter to Finish.");
+                    Console.WriteLine("Press Which Course You What Save The Grades.");
+                    Console.WriteLine("1.BSIT\t 2.BSA\t3.BSCPE\t4.BEED\t5.BSIE");
+                    optionSelected = Console.ReadLine()[0];
 
                     double q1Score = quiz1Score / 10 * 10;
                     double p1Score = project1Score / 100 * 50;
@@ -137,7 +145,32 @@ namespace SGS.UI
                     addingMidAndFinal1 = midtermResult1 + prefinalsResult1;
                     finalResult = addingMidAndFinal1 / 2;
                     finalPercentageAverage = prefinalsResult1 + finalPercentage;
-                    grade.AverageGrades.Add(finalPercentageAverage);
+
+                    switch (optionSelected)
+                    {
+                        case '1':
+                            grade.BsitGrades.Add(finalPercentageAverage);
+                            OtherCommand();
+                            break;
+                        case '2':
+                            grade.BsaGrades.Add(finalPercentageAverage);
+                            OtherCommand();
+                            break;
+                        case '3':
+                            grade.BscpeGrades.Add(finalPercentageAverage);
+                            OtherCommand();
+                            break;
+                        case '4':
+                            grade.BeedGrades.Add(finalPercentageAverage);
+                            OtherCommand();
+                            break;
+                        case '5':
+                            grade.BsieGrades.Add(finalPercentageAverage);
+                            OtherCommand();
+                            break;
+                        default:
+                            break;
+                    }
                 }
 
                 //Without Percentage Based
@@ -182,37 +215,38 @@ namespace SGS.UI
                     prefinalsResult1 = q2Score + p2score + feScore;
                     addingMidAndFinal1 = midtermResult1 + prefinalsResult1;
                     finalResult = addingMidAndFinal1 / 2;
-                    grade.AverageGrades.Add(finalResult);
+
+                    Console.WriteLine("1.BSIT\t 2.BSA\t3.BSCPE\t4.BEED\t5.BSIE");
+                    optionSelected = Console.ReadLine()[0];
+                    switch (optionSelected)
+                    {
+                        case '1':
+                            grade.BsitGrades.Add(finalResult);
+                            OtherCommand();
+                            break;
+                        case '2':
+                            grade.BsaGrades.Add(finalResult);
+                            OtherCommand();
+                            break;
+                        case '3':
+                            grade.BscpeGrades.Add(finalResult);
+                            OtherCommand();
+                            break;
+                        case '4':
+                            grade.BeedGrades.Add(finalResult);
+                            OtherCommand();
+                            break;
+                        case '5':
+                            grade.BsieGrades.Add(finalResult);
+                            OtherCommand();
+                            break;
+                        default:
+                            break;
+                    }
 
                     Console.WriteLine(" ");
                     Console.WriteLine("----------------------------------------------------------------------------------------");
                     Console.WriteLine(" ");
-
-                    //Command to View, End the Program & Back to Main Menu
-                    Console.WriteLine("Done, Successfully Added");
-                    Console.WriteLine("Command: \nV/v to View the Result Grades");
-                    Console.WriteLine("L/l to Log-out");
-                    Console.WriteLine("E/e to End the Program");
-                    optionSelected = Console.ReadLine()[0];
-
-                    switch (optionSelected)
-                    {
-                        case 'v':
-                        case 'V':
-                            DisplayTheStudent();
-                            break;
-                        case 'L':
-                        case 'l':
-                            log.LoginSystem();
-                            break;
-                        case 'e':
-                        case 'E':
-                            log.EndTheProgram();
-                            break;
-                        default:
-                            Console.WriteLine("Invalid");
-                            break;
-                    }
                 }
                 else
                 {
@@ -224,14 +258,73 @@ namespace SGS.UI
                 Console.WriteLine(e.Message);
             }
         }
+        public void OtherCommand()
+        {
+            //Command to View, End the Program & Back to Main Menu
+            Console.WriteLine("Done, Successfully Added");
+            Console.WriteLine("Command: \nV/v to View the Result Grades");
+            Console.WriteLine("L/l to Log-out");
+            Console.WriteLine("E/e to End the Program");
+            Console.WriteLine("B/b to Back to Professor Main Menu");
+            optionSelected = Console.ReadLine()[0];
+
+            switch (optionSelected)
+            {
+                case 'v':
+                case 'V':
+                    DisplayTheStudent();
+                    break;
+                case 'L':
+                case 'l':
+                    log.LoginSystem();
+                    break;
+                case 'e':
+                case 'E':
+                    log.EndTheProgram();
+                    break;
+                case 'b':
+                case 'B':
+                    ProfessorMainMenu();
+                    break;
+                default:
+                    Console.WriteLine("Invalid");
+                    break;
+            }
+        }
         public void DisplayTheStudent()
         {
+            Console.WriteLine("Command: ");
+            Console.WriteLine("1. BSIT \t2. BSA\t3.BSCPE\n4.BEED\t5.BSIE");
+            Console.WriteLine("6.to End the Program \t7.Log-Out");
+            Console.Write("Enter a Command: ");
+            optionSelected = Console.ReadLine()[0];
+
+            switch (optionSelected)
+            {
+                case '1':
+                    DisplayAllBsitStudentAndGrades();
+                    break;
+                case '2':
+                    log.LoginSystem();
+                    break;
+                case '3':
+                    log.EndTheProgram();
+                    break;
+                default:
+                    Console.WriteLine("Invalid");
+                    break;
+            }
             num = 1;
-            if (student.AddStudentName.Count < 0 && student.AddStudentCourseAndSection.Count < 0)
+            num2 = 1;
+        }
+        public void DisplayAllBsitStudentAndGrades()
+        {
+            if (course.AddBSIT.Count < 0 && grade.BsitGrades.Count < 0)
             {
                 Console.WriteLine("No Information Yet");
                 Console.WriteLine("Press the Command: ");
                 Console.WriteLine("B/b = Back Main Menu\nL/l = Log-out");
+                Console.Write("Enter a Command: ");
                 optionSelected = Console.ReadLine()[0];
                 switch (optionSelected)
                 {
@@ -250,23 +343,40 @@ namespace SGS.UI
             }
             else
             {
-                if (student.AddStudentName.Count > 0 && student.AddStudentCourseAndSection.Count > 0) 
+                Console.WriteLine("Same Numberical Order Represent their Grades");
+                if (course.AddBSIT.Count > 0 && grade.BsitGrades.Count > 0)
                 {
-                    foreach (var studentNameItems in student.AddStudentName)
+                    foreach (var studentNameItems in course.AddBSIT)
                     {
-                        Console.Write($"{num}. Student Name: {studentNameItems}");
+                        Console.Write($" {num}. Student Name: {studentNameItems}\n");
                         num++;
                     }
-                    foreach (var courseAndSection in student.AddStudentCourseAndSection)
+                    Console.WriteLine(" ");
+                    foreach (var gradeBsitItem in grade.BsitGrades)
                     {
-                        Console.Write($"\n  Course & Section: {courseAndSection}");
-                    }
-                    foreach (var studentGrade in grade.AverageGrades)
-                    {
-                        Console.WriteLine($"\n  Average Grade: {studentGrade}");
+                        Console.Write($" {num2}  Average: {gradeBsitItem}\n");
+                        num2++;
                     }
                 }
             }
+            Console.WriteLine("\nB/b - Professor Main Menu\nL/l - Log-Out");
+            optionSelected = Console.ReadLine()[0];
+            switch (optionSelected)
+            {
+                case 'b':
+                case 'B':
+                    ProfessorMainMenu();
+                    break;
+                case 'L':
+                case 'l':
+                    log.LoginSystem();
+                    break;
+                default:
+                    Console.WriteLine();
+                    break;
+            }
         }
+
     }
 }
+
